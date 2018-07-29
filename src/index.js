@@ -13,6 +13,6 @@ const store = createStore(searchRobots);
 ReactDOM.render(
     //Provider takes care of passing down the store to all children down the tree of components
     <Provider store={store}>
-        <App />,
+        <App />
     </Provider>, document.getElementById('root'));
 registerServiceWorker();
