@@ -1,0 +1,6 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family:sans-serif;
+    background: -webkit-linear-gradient(left, rgba(239,197,202,1) 0%, rgba(210,75,90,1) 50%, rgba(186,39,55,1) 51%, rgba(241,142,153,1) 100%);
+}
