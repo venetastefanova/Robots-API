@@ -9,8 +9,11 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = state => {
   return {
-    //this comes from the reducer
-      searchField: state.searchField
+    //this comes from the reducer, since they are more than one reducer, we use object 
+      searchField: state.searchRobots.searchField,
+      robots: state.requestRobots.robots, // gets it from the reducer
+      isPending: state.requestRobots.isPending,
+      error:state.requestRobots.error
   }
 }
 //what triggers the action
