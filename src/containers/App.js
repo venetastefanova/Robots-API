@@ -4,7 +4,7 @@ import SearchBox from '../components/SearchBox';
 import './App.css';
 import Scroll from '../components/Scroll';
 import ErrorBoundary from '../components/ErrorBoundary'; 
-import {setSearchField} from '../actions';
+import {setSearchField, requestRobots} from '../actions';
 import {connect} from 'react-redux';
 
 const mapStateToProps = state => {
@@ -19,19 +19,16 @@ const mapStateToProps = state => {
 //what triggers the action
 const mapDispatchToProps = (dispatch) =>{
     return {
-      onSearchChange : (event) => dispatch(setSearchField(event.target.value))
+      onSearchChange : (event) => dispatch(setSearchField(event.target.value)),
+      onRequestRobots: () => dispatch(requestRobots()) // requestRobots gets triggered by the dispatch method; it's gonna catch the fact that it's going to return a function
     }
 }
+
+
 class App extends Component {
-   state = {
-    robots:[]
-  }
 
   componentDidMount(){
-    // console.log(this.props.store.getStore);
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(response=>response.json())
-      .then(users=>this.setState({robots:users}));
+    this.props.onRequestRobots(); // updates the state from Redux
   }
   // onSearchChange = (event) => {
   //   this.setState({searchField: event.target.value}); //changing the searchfield to the whatever is in the input
@@ -40,13 +37,12 @@ class App extends Component {
   // }
   render(){
     // destructuring
-    const {robots} = this.state;
-    const {searchField, onSearchChange} = this.props;
+    const {searchField, onSearchChange, robots, isPending} = this.props;
     const filteredRobots = robots.filter(robot=>{
       return robot.name.toLowerCase().includes(searchField.toLowerCase()); // checks if the robots name includes the search input
     });
     // console.log(filteredRobots);
-     return !robots.length ?
+     return isPending ?
     <h1>Loading...</h1> : 
      (
         <div className="tc">

@@ -14,7 +14,7 @@ export const setSearchField = (text) => ({
 
 
 //action for the ajax call for the robots from the API
-export const requestRobots  = (dispatch) => {
+export const requestRobots  = () =>(dispatch) => { // higher order function that calls other function-> because it's thrunk
     //first dispatches the request
     dispatch({type:REQUEST_ROBOTS_PENDING});
     //making the ajax cal
