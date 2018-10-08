@@ -2,7 +2,7 @@
   "name": "robofriends",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://venetastefanova.github.io/React-Redux-Moduling",
+  "homepage": "https://venetastefanova.github.io/React-Redux-Moduling",
   "dependencies": {
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
@@ -15,11 +15,15 @@
     "tachyons": "^4.11.1"
   },
   "scripts": {
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0"
   }
 }
