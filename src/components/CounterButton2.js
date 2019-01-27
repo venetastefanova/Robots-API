@@ -6,13 +6,13 @@ class CounterButton extends Component{
         count: 5
         }
 
-    shouldComponentUpdate(nextProps, nextState){
+            shouldComponentUpdate(nextProps, nextState){
         //console.log(nextState, nextProps);
-        //only if the state updates
-        if(this.state.count !== nextState.count){
+                //only if the state updates
+                if(this.state.count !== nextState.count){
             return true;
         }
-        return false;
+                     return false;
     }
 
     updateCount = () =>{//gets the last state
